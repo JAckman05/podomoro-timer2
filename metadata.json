@@ -1,0 +1,6 @@
+{
+  "name": "Podomoro Timer Premium",
+  "description": "Sebuah aplikasi Pomodoro Timer modern, interaktif, dan responsif dengan desain glassmorphism premium yang dirancang untuk meningkatkan produktivitas Anda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
