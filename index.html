@@ -3,687 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podomoro Timer Premium</title>
+    <title>Pomodoro Timer Elegant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0f0a0f;
+            background-color: #f8fafc;
         }
-        /* Desain Glassmorphism Premium */
-        .glass-card {
-            background: rgba(23, 18, 26, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+        .elegant-shadow {
+            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
         }
-        .glass-banner {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        /* Efek Tema Gradasi Latar Belakang */
-        .bg-theme-focus {
-            background: radial-gradient(circle at top left, #2d1419 0%, #150a0d 50%, #0c0608 100%);
-        }
-        .bg-theme-short {
-            background: radial-gradient(circle at top left, #0e241b 0%, #07120e 50%, #040a08 100%);
-        }
-        .bg-theme-long {
-            background: radial-gradient(circle at top left, #0f1c2e 0%, #070e17 50%, #04080d 100%);
+        .inner-glow {
+            box-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.8);
         }
     </style>
 </head>
-<body class="min-h-screen text-slate-300 antialiased overflow-x-hidden">
+<body class="min-h-screen text-slate-700 bg-slate-50 flex flex-col justify-between antialiased">
 
-    <div id="bg-wrapper" class="bg-theme-focus min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between">
+    <main class="w-full max-w-5xl mx-auto px-6 py-12 flex-grow flex flex-col justify-center items-center gap-12">
         
-        <header class="w-full max-w-6xl mx-auto flex justify-between items-center mb-6">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl">🍅</span>
-                <div>
-                    <h1 class="text-lg font-extrabold tracking-tight text-white leading-none">Podomoro Timer <span class="text-[10px] bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black px-1.5 py-0.5 rounded ml-1 uppercase">Premium</span></h1>
-                    <p class="text-[10px] text-slate-500 font-medium tracking-wider uppercase mt-1">Teman Produktivitas Anda</p>
+        <div class="w-full flex justify-between items-center max-w-4xl">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-orange-400 flex items-center justify-center shadow-md shadow-rose-500/20">
+                    <i class="fa-regular fa-clock text-white text-lg"></i>
                 </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <button id="btn-info" class="w-9 h-9 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-rose-400 transition-all flex items-center justify-center text-sm">
-                    <i class="fa-solid fa-circle-info"></i>
-                </button>
-                <button id="btn-settings" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-300 transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-gear text-slate-400"></i> Pengaturan
-                </button>
-            </div>
-        </header>
-
-        <main class="w-full max-w-6xl mx-auto flex-grow flex flex-col gap-6">
-            
-            <div id="welcome-banner" class="w-full glass-banner rounded-2xl p-5 relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h2 class="text-sm font-bold text-white flex items-center gap-1.5 mb-1">
-                        <span class="text-amber-400">✨</span> Selamat datang di Podomoro Timer Premium yang Eksklusif!
-                    </h2>
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-4xl">
-                        Aplikasi ini dirancang menggunakan desain <span class="text-white font-semibold">glassmorphic premium</span> untuk melatih kesabaran, disiplin dan tingkat konsentrasi terbaik Anda. Latar belakang berwarna merah melambangkan <span class="text-rose-400 font-medium">fokus mendalam</span>, hijau melambangkan <span class="text-emerald-400 font-medium">istirahat pendek</span>, dan biru melambangkan <span class="text-sky-400 font-medium">relaksasi panjang</span>. Pilih tugas di bawah atau buat tugas baru untuk disinkronisasikan sebagai target fokus utama Anda di dalam lingkaran waktu!
-                    </p>
-                    <div class="flex flex-wrap gap-4 mt-3 text-[11px] text-slate-500">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-arrows-spin text-sky-400"></i> Modus Siklik: 4x Fokus kemudian istirahat panjang</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-amber-400"></i> Sinyal Alarm Sintetis berbasis Web Audio API aman</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-floppy-disk text-emerald-400"></i> Penyimpanan otomatis anti-hilang (LocalStorage)</span>
-                    </div>
-                </div>
-                <button id="close-banner" class="text-xs font-semibold text-slate-500 hover:text-slate-300 whitespace-nowrap bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-lg transition-all">Sembunyikan</button>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                
-                <div class="lg:col-span-5 glass-card rounded-3xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
-                    <div class="bg-black/40 border border-white/5 p-1 rounded-full flex gap-1 mb-8 w-full max-w-xs">
-                        <button id="mode-focus" class="flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-rose-500/10 text-rose-400 border border-rose-500/20">Focus</button>
-                        <button id="mode-short" class="flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all">Short</button>
-                        <button id="mode-long" class="flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all">Long</button>
-                    </div>
-
-                    <div class="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center cursor-pointer group" id="timer-circle">
-                        <svg class="absolute inset-0 w-full h-full -rotate-90">
-                            <circle cx="50%" cy="50%" r="44%" stroke="rgba(255,255,255,0.02)" stroke-width="6" fill="transparent" />
-                            <circle id="progress-ring" cx="50%" cy="50%" r="44%" stroke="#f43f5e" stroke-width="6" fill="transparent" 
-                                    stroke-dasharray="792" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-300" />
-                        </svg>
-
-                        <div class="text-center z-10">
-                            <span id="label-indicator" class="text-[10px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold">✨ Fokus 🍅</span>
-                            <span id="time-display" class="text-5xl md:text-6xl font-black text-white block mt-3 tracking-tight tabular-nums">25:00</span>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-2 group-hover:text-slate-400 transition-all">Ketuk untuk memulai fokus Anda</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 glass-card rounded-3xl p-6 shadow-2xl flex flex-col gap-5 min-h-[380px]">
-                    <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                        <span class="w-5 h-5 rounded-full border-2 border-rose-500/40 flex items-center justify-center text-[8px] text-rose-400 font-black">●</span>
-                        <h3 class="text-sm font-bold text-white">Daftar Fokus & Tugas</h3>
-                        <span class="text-[10px] text-slate-500 ml-auto">Kelola target belajar dan sesi fokus Anda</span>
-                    </div>
-
-                    <form id="task-form" class="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-4">
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Tugas Baru</label>
-                            <input type="text" id="task-input" placeholder="Apa yang ingin Anda fokuskan?" 
-                                   class="w-full bg-black/30 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder:text-slate-600 focus:outline-none focus:border-rose-500/30 transition-all">
-                        </div>
-
-                        <div class="flex flex-wrap justify-between items-center gap-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Estimasi Pomodoro:</span>
-                                <div class="flex items-center gap-1" id="tomat-selector">
-                                    <button type="button" data-val="1" class="text-sm filter saturate-100 opacity-100 transition-all">🍅</button>
-                                    <button type="button" data-val="2" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="3" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="4" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="5" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                </div>
-                                <span id="tomat-count-label" class="text-xs text-white font-bold ml-1">1</span>
-                            </div>
-
-                            <button type="submit" class="bg-rose-600/20 text-rose-400 border border-rose-500/20 hover:bg-rose-600/30 font-bold text-xs px-4 py-2 rounded-xl transition-all flex items-center gap-1">
-                                <i class="fa-solid fa-plus"></i> Tambah
-                            </button>
-                        </div>
-                    </form>
-
-                    <div id="task-container" class="space-y-2 flex-grow overflow-y-auto max-h-[220px] pr-1">
-                        <div id="empty-state" class="h-full py-10 flex flex-col items-center justify-center text-center">
-                            <div class="w-10 h-10 rounded-full border border-dashed border-white/10 flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-bullseye text-rose-500/40 text-sm"></i>
-                            </div>
-                            <p class="text-xs text-slate-400 font-medium">Belum ada tugas yang ditambahkan.</p>
-                            <p class="text-[10px] text-slate-600 mt-1">Gunakan form di atas untuk memulai fokus pertamamu!</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </main>
-
-        <footer class="w-full text-center text-[10px] text-slate-600 border-t border-white/5 pt-4 mt-6">
-            <p>© 2026 Podomoro. Dibuat dengan cinta untuk produktivitas Anda.</p>
-        </footer>
-
-    </div>
-
-    <div id="settings-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4 opacity-0 transition-all duration-300">
-        <div class="glass-card max-w-sm w-full rounded-3xl p-6 border border-white/10">
-            <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-sliders text-rose-400"></i> Atur Durasi Waktu (Menit)</h3>
-            <div class="space-y-3 mb-5">
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">🍅 Sesi Fokus</label>
-                    <input type="number" id="input-focus" min="1" max="60" value="25" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rose-500">
-                </div>
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">☕ Istirahat Pendek</label>
-                    <input type="number" id="input-short" min="1" max="30" value="5" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">🌴 Istirahat Panjang</label>
-                    <input type="number" id="input-long" min="1" max="60" value="15" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
-                </div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-800">Podomoro.</span>
             </div>
             <div class="flex gap-2">
-                <button id="cancel-settings" class="flex-1 py-2 bg-white/5 hover:bg-white/10 text-xs font-medium rounded-xl text-slate-300">Batal</button>
-                <button id="save-settings" class="flex-1 py-2 bg-rose-600 text-white font-bold text-xs rounded-xl hover:bg-rose-500 shadow-lg shadow-rose-600/20">Terapkan</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let currentMode = 'focus', isRunning = false, timerInterval = null, totalSeconds = 25 * 60, originalSeconds = 25 * 60;
-        let settings = { focus: 25, short: 5, long: 15 }, tasks = [], selectedTomat = 1;
-
-        const bgWrapper = document.getElementById('bg-wrapper'), timeDisplay = document.getElementById('time-display'), labelIndicator = document.getElementById('label-indicator'), progressRing = document.getElementById('progress-ring'), timerCircle = document.getElementById('timer-circle');
-        const modeFocus = document.getElementById('mode-focus'), modeShort = document.getElementById('mode-short'), modeLong = document.getElementById('mode-long');
-        const taskForm = document.getElementById('task-form'), taskInput = document.getElementById('task-input'), tomatSelector = document.getElementById('tomat-selector'), tomatCountLabel = document.getElementById('tomat-count-label'), taskContainer = document.getElementById('task-container'), emptyState = document.getElementById('empty-state');
-        const settingsModal = document.getElementById('settings-modal'), btnSettings = document.getElementById('btn-settings'), cancelSettings = document.getElementById('cancel-settings'), saveSettings = document.getElementById('save-settings');
-
-        // BEEP AUDIO ALARM SYNTHESIS
-        function triggerAlarm() {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator(), gain = ctx.createGain();
-                osc.connect(gain); gain.connect(ctx.destination);
-                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 Note
-                gain.gain.setValueAtTime(0.2, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
-                osc.start(); osc.stop(ctx.currentTime + 0.6);
-            } catch(e){}
-        }
-
-        function syncTimerModeValues() {
-            let m = settings[currentMode];
-            totalSeconds = m * 60; originalSeconds = totalSeconds;
-            if (currentMode === 'focus') {
-                labelIndicator.textContent = "✨ Fokus 🍅";
-                labelIndicator.className = "text-[10px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#f43f5e');
-            } else if (currentMode === 'short') {
-                labelIndicator.textContent = "☕ Istirahat Pendek";
-                labelIndicator.className = "text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#10b981');
-            } else {
-                labelIndicator.textContent = "🌴 Istirahat Panjang";
-                labelIndicator.className = "text-[10px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#0ea5e9');
-            }
-            refreshDisplay();
-        }
-
-        function refreshDisplay() {
-            let mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
-            let secs = String(totalSeconds % 60).padStart(2, '0');
-            timeDisplay.textContent = `${mins}:${secs}`;
-            let offset = 792 - ((totalSeconds / originalSeconds) * 792);
-            progressRing.setAttribute('stroke-dashoffset', isNaN(offset) ? 0 : offset);
-        }
-
-        function changeThemeMode(m) {
-            isRunning = false; clearInterval(timerInterval); currentMode = m;
-            [modeFocus, modeShort, modeLong].forEach(b => b.className = "flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all");
-            
-            if(m === 'focus') {
-                modeFocus.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-rose-500/10 text-rose-400 border border-rose-500/20";
-                bgWrapper.className = "bg-theme-focus min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            } else if(m === 'short') {
-                modeShort.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
-                bgWrapper.className = "bg-theme-short min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            } else {
-                modeLong.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-sky-500/10 text-sky-400 border border-sky-500/20";
-                bgWrapper.className = "bg-theme-long min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            }
-            syncTimerModeValues();
-        }
-
-        // TOGGLE RUN / PAUSE TIMER
-        timerCircle.addEventListener('click', () => {
-            if (isRunning) {
-                isRunning = false; clearInterval(timerInterval);
-            } else {
-                isRunning = true;
-                timerInterval = setInterval(() => {
-                    if (totalSeconds > 0) {
-                        totalSeconds--; refreshDisplay();
-                    } else {
-                        clearInterval(timerInterval); isRunning = false; triggerAlarm();
-                        changeThemeMode(currentMode === 'focus' ? 'short' : 'focus');
-                    }
-                }, 1000);
-            }
-        });
-
-        // KONTROL SELEKTOR TOMAT ESTIMASI
-        tomatSelector.addEventListener('click', (e) => {
-            const btn = e.target.closest('button'); if(!btn) return;
-            selectedTomat = parseInt(btn.getAttribute('data-val'));
-            tomatCountLabel.textContent = selectedTomat;
-            Array.from(tomatSelector.children).forEach((child, index) => {
-                if (index < selectedTomat) {
-                    child.className = "text-sm filter saturate-100 opacity-100 transition-all";
-                } else {
-                    child.className = "text-sm filter grayscale opacity-30 hover:opacity-70 transition-all";
-                }
-            });
-        });
-
-        // MANAJEMEN TUGAS (TASK)
-        taskForm.addEventListener('submit', (e) => {
-            e.preventDefault(); const txt = taskInput.value.trim(); if(!txt) return;
-            tasks.push({ id: Date.now().toString(), text: txt, tomat: selectedTomat, completed: false });
-            taskInput.value = ''; localStorage.setItem('premium_tasks', JSON.stringify(tasks));
-            renderTasks();
-        });
-
-        window.toggleTask = function(id) {
-            tasks = tasks.map(t => { if(t.id === id) t.completed = !t.completed; return t; });
-            localStorage.setItem('premium_tasks', JSON.stringify(tasks)); renderTasks();
-        }
-
-        window.deleteTask = function(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            localStorage.setItem('premium_tasks', JSON.stringify(tasks)); renderTasks();
-        }
-
-        function renderTasks() {
-            if (tasks.length > 0) {
-                emptyState.classList.add('hidden');
-                taskContainer.innerHTML = tasks.map(t => `
-                    <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] transition-all group ${t.completed ? 'opacity-40 line-through' : ''}">
-                        <div class="flex items-center gap-3 cursor-pointer flex-1" onclick="toggleTask('${t.id}')">
-                            <div class="w-4 h-4 rounded border ${t.completed?'bg-rose-500 border-rose-500 flex items-center justify-center':'border-white/20'}">
-                                ${t.completed ? '<i class="fa-solid fa-check text-[9px] text-slate-950 font-black"></i>':''}
-                            </div>
-                            <span class="text-xs text-slate-200 font-medium">${t.text}</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs">${'🍅'.repeat(t.tomat)}</span>
-                            <button onclick="deleteTask('${t.id}')" class="text-slate-500 hover:text-rose-400 opacity-0 group-hover:opacity-100 transition-opacity text-xs p-1"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                taskContainer.innerHTML = ''; emptyState.classList.remove('hidden');
-            }
-        }
-
-        // MODAL EVENT HANDLERS
-        btnSettings.addEventListener('click', () => { settingsModal.classList.remove('hidden'); settingsModal.classList.add('flex'); setTimeout(() => settingsModal.classList.replace('opacity-0', 'opacity-100'), 10); });
-        const closeM = () => { settingsModal.classList.replace('opacity-100', 'opacity-0'); setTimeout(() => { settingsModal.classList.remove('flex'); settingsModal.classList.add('hidden'); }, 300); };
-        cancelSettings.addEventListener('click', closeM);
-        saveSettings.addEventListener('click', () => {
-            settings.focus = parseInt(document.getElementById('input-focus').value) || 25;
-            settings.short = parseInt(document.getElementById('input-short').value) || 5;
-            settings.long = parseInt(document.getElementById('input-long').value) || 15;
-            localStorage.setItem('premium_settings', JSON.stringify(settings)); syncTimerModeValues(); closeM();
-        });
-
-        // BANNER BEHAVIOR
-        document.getElementById('close-banner').addEventListener('click', () => { document.getElementById('welcome-banner').remove(); });
-        modeFocus.addEventListener('click', () => changeThemeMode('focus'));
-        modeShort.addEventListener('click', () => changeThemeMode('short'));
-        modeLong.addEventListener('click', () => changeThemeMode('long'));
-
-        window.onload = () => {
-            const s = localStorage.getItem('premium_settings'), t = localStorage.getItem('premium_tasks');
-            if(s) { settings = JSON.parse(s); document.getElementById('input-focus').value = settings.focus; document.getElementById('input-short').value = settings.short; document.getElementById('input-long').value = settings.long; }
-            if(t) { tasks = JSON.parse(t); renderTasks(); }
-            syncTimerModeValues();
-        };
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podomoro Timer Premium</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0f0a0f;
-        }
-        /* Desain Glassmorphism Premium */
-        .glass-card {
-            background: rgba(23, 18, 26, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-        .glass-banner {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        /* Efek Tema Gradasi Latar Belakang */
-        .bg-theme-focus {
-            background: radial-gradient(circle at top left, #2d1419 0%, #150a0d 50%, #0c0608 100%);
-        }
-        .bg-theme-short {
-            background: radial-gradient(circle at top left, #0e241b 0%, #07120e 50%, #040a08 100%);
-        }
-        .bg-theme-long {
-            background: radial-gradient(circle at top left, #0f1c2e 0%, #070e17 50%, #04080d 100%);
-        }
-    </style>
-</head>
-<body class="min-h-screen text-slate-300 antialiased overflow-x-hidden">
-
-    <div id="bg-wrapper" class="bg-theme-focus min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between">
-        
-        <header class="w-full max-w-6xl mx-auto flex justify-between items-center mb-6">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl">🍅</span>
-                <div>
-                    <h1 class="text-lg font-extrabold tracking-tight text-white leading-none">Podomoro Timer <span class="text-[10px] bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black px-1.5 py-0.5 rounded ml-1 uppercase">Premium</span></h1>
-                    <p class="text-[10px] text-slate-500 font-medium tracking-wider uppercase mt-1">Teman Produktivitas Anda</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <button id="btn-info" class="w-9 h-9 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-rose-400 transition-all flex items-center justify-center text-sm">
-                    <i class="fa-solid fa-circle-info"></i>
+                <button class="w-10 h-10 rounded-xl bg-white text-slate-400 hover:text-slate-600 border border-slate-200/60 flex items-center justify-center transition-all shadow-sm" title="Statistik">
+                    <i class="fa-solid fa-chart-bar text-sm"></i>
                 </button>
-                <button id="btn-settings" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-300 transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-gear text-slate-400"></i> Pengaturan
+                <button class="w-10 h-10 rounded-xl bg-white text-slate-400 hover:text-slate-600 border border-slate-200/60 flex items-center justify-center transition-all shadow-sm" title="Pengaturan">
+                    <i class="fa-solid fa-sliders text-sm"></i>
                 </button>
             </div>
-        </header>
-
-        <main class="w-full max-w-6xl mx-auto flex-grow flex flex-col gap-6">
-            
-            <div id="welcome-banner" class="w-full glass-banner rounded-2xl p-5 relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h2 class="text-sm font-bold text-white flex items-center gap-1.5 mb-1">
-                        <span class="text-amber-400">✨</span> Selamat datang di Podomoro Timer Premium yang Eksklusif!
-                    </h2>
-                    <p class="text-xs text-slate-400 leading-relaxed max-w-4xl">
-                        Aplikasi ini dirancang menggunakan desain <span class="text-white font-semibold">glassmorphic premium</span> untuk melatih kesabaran, disiplin dan tingkat konsentrasi terbaik Anda. Latar belakang berwarna merah melambangkan <span class="text-rose-400 font-medium">fokus mendalam</span>, hijau melambangkan <span class="text-emerald-400 font-medium">istirahat pendek</span>, dan biru melambangkan <span class="text-sky-400 font-medium">relaksasi panjang</span>. Pilih tugas di bawah atau buat tugas baru untuk disinkronisasikan sebagai target fokus utama Anda di dalam lingkaran waktu!
-                    </p>
-                    <div class="flex flex-wrap gap-4 mt-3 text-[11px] text-slate-500">
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-arrows-spin text-sky-400"></i> Modus Siklik: 4x Fokus kemudian istirahat panjang</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-volume-high text-amber-400"></i> Sinyal Alarm Sintetis berbasis Web Audio API aman</span>
-                        <span class="flex items-center gap-1.5"><i class="fa-solid fa-floppy-disk text-emerald-400"></i> Penyimpanan otomatis anti-hilang (LocalStorage)</span>
-                    </div>
-                </div>
-                <button id="close-banner" class="text-xs font-semibold text-slate-500 hover:text-slate-300 whitespace-nowrap bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-lg transition-all">Sembunyikan</button>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                
-                <div class="lg:col-span-5 glass-card rounded-3xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
-                    <div class="bg-black/40 border border-white/5 p-1 rounded-full flex gap-1 mb-8 w-full max-w-xs">
-                        <button id="mode-focus" class="flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-rose-500/10 text-rose-400 border border-rose-500/20">Focus</button>
-                        <button id="mode-short" class="flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all">Short</button>
-                        <button id="mode-long" class="flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all">Long</button>
-                    </div>
-
-                    <div class="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center cursor-pointer group" id="timer-circle">
-                        <svg class="absolute inset-0 w-full h-full -rotate-90">
-                            <circle cx="50%" cy="50%" r="44%" stroke="rgba(255,255,255,0.02)" stroke-width="6" fill="transparent" />
-                            <circle id="progress-ring" cx="50%" cy="50%" r="44%" stroke="#f43f5e" stroke-width="6" fill="transparent" 
-                                    stroke-dasharray="792" stroke-dashoffset="0" stroke-linecap="round" class="transition-all duration-300" />
-                        </svg>
-
-                        <div class="text-center z-10">
-                            <span id="label-indicator" class="text-[10px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold">✨ Fokus 🍅</span>
-                            <span id="time-display" class="text-5xl md:text-6xl font-black text-white block mt-3 tracking-tight tabular-nums">25:00</span>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-2 group-hover:text-slate-400 transition-all">Ketuk untuk memulai fokus Anda</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 glass-card rounded-3xl p-6 shadow-2xl flex flex-col gap-5 min-h-[380px]">
-                    <div class="flex items-center gap-2 border-b border-white/5 pb-3">
-                        <span class="w-5 h-5 rounded-full border-2 border-rose-500/40 flex items-center justify-center text-[8px] text-rose-400 font-black">●</span>
-                        <h3 class="text-sm font-bold text-white">Daftar Fokus & Tugas</h3>
-                        <span class="text-[10px] text-slate-500 ml-auto">Kelola target belajar dan sesi fokus Anda</span>
-                    </div>
-
-                    <form id="task-form" class="bg-white/5 border border-white/5 rounded-2xl p-4 flex flex-col gap-4">
-                        <div>
-                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Tugas Baru</label>
-                            <input type="text" id="task-input" placeholder="Apa yang ingin Anda fokuskan?" 
-                                   class="w-full bg-black/30 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white placeholder:text-slate-600 focus:outline-none focus:border-rose-500/30 transition-all">
-                        </div>
-
-                        <div class="flex flex-wrap justify-between items-center gap-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Estimasi Pomodoro:</span>
-                                <div class="flex items-center gap-1" id="tomat-selector">
-                                    <button type="button" data-val="1" class="text-sm filter saturate-100 opacity-100 transition-all">🍅</button>
-                                    <button type="button" data-val="2" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="3" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="4" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                    <button type="button" data-val="5" class="text-sm filter grayscale opacity-30 hover:opacity-70 transition-all">🍅</button>
-                                </div>
-                                <span id="tomat-count-label" class="text-xs text-white font-bold ml-1">1</span>
-                            </div>
-
-                            <button type="submit" class="bg-rose-600/20 text-rose-400 border border-rose-500/20 hover:bg-rose-600/30 font-bold text-xs px-4 py-2 rounded-xl transition-all flex items-center gap-1">
-                                <i class="fa-solid fa-plus"></i> Tambah
-                            </button>
-                        </div>
-                    </form>
-
-                    <div id="task-container" class="space-y-2 flex-grow overflow-y-auto max-h-[220px] pr-1">
-                        <div id="empty-state" class="h-full py-10 flex flex-col items-center justify-center text-center">
-                            <div class="w-10 h-10 rounded-full border border-dashed border-white/10 flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-bullseye text-rose-500/40 text-sm"></i>
-                            </div>
-                            <p class="text-xs text-slate-400 font-medium">Belum ada tugas yang ditambahkan.</p>
-                            <p class="text-[10px] text-slate-600 mt-1">Gunakan form di atas untuk memulai fokus pertamamu!</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </main>
-
-        <footer class="w-full text-center text-[10px] text-slate-600 border-t border-white/5 pt-4 mt-6">
-            <p>© 2026 Podomoro. Dibuat dengan cinta untuk produktivitas Anda.</p>
-        </footer>
-
-    </div>
-
-    <div id="settings-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4 opacity-0 transition-all duration-300">
-        <div class="glass-card max-w-sm w-full rounded-3xl p-6 border border-white/10">
-            <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-sliders text-rose-400"></i> Atur Durasi Waktu (Menit)</h3>
-            <div class="space-y-3 mb-5">
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">🍅 Sesi Fokus</label>
-                    <input type="number" id="input-focus" min="1" max="60" value="25" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-rose-500">
-                </div>
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">☕ Istirahat Pendek</label>
-                    <input type="number" id="input-short" min="1" max="30" value="5" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">🌴 Istirahat Panjang</label>
-                    <input type="number" id="input-long" min="1" max="60" value="15" class="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-500">
-                </div>
-            </div>
-            <div class="flex gap-2">
-                <button id="cancel-settings" class="flex-1 py-2 bg-white/5 hover:bg-white/10 text-xs font-medium rounded-xl text-slate-300">Batal</button>
-                <button id="save-settings" class="flex-1 py-2 bg-rose-600 text-white font-bold text-xs rounded-xl hover:bg-rose-500 shadow-lg shadow-rose-600/20">Terapkan</button>
-            </div>
         </div>
-    </div>
 
-    <script>
-        let currentMode = 'focus', isRunning = false, timerInterval = null, totalSeconds = 25 * 60, originalSeconds = 25 * 60;
-        let settings = { focus: 25, short: 5, long: 15 }, tasks = [], selectedTomat = 1;
-
-        const bgWrapper = document.getElementById('bg-wrapper'), timeDisplay = document.getElementById('time-display'), labelIndicator = document.getElementById('label-indicator'), progressRing = document.getElementById('progress-ring'), timerCircle = document.getElementById('timer-circle');
-        const modeFocus = document.getElementById('mode-focus'), modeShort = document.getElementById('mode-short'), modeLong = document.getElementById('mode-long');
-        const taskForm = document.getElementById('task-form'), taskInput = document.getElementById('task-input'), tomatSelector = document.getElementById('tomat-selector'), tomatCountLabel = document.getElementById('tomat-count-label'), taskContainer = document.getElementById('task-container'), emptyState = document.getElementById('empty-state');
-        const settingsModal = document.getElementById('settings-modal'), btnSettings = document.getElementById('btn-settings'), cancelSettings = document.getElementById('cancel-settings'), saveSettings = document.getElementById('save-settings');
-
-        // BEEP AUDIO ALARM SYNTHESIS
-        function triggerAlarm() {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator(), gain = ctx.createGain();
-                osc.connect(gain); gain.connect(ctx.destination);
-                osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 Note
-                gain.gain.setValueAtTime(0.2, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
-                osc.start(); osc.stop(ctx.currentTime + 0.6);
-            } catch(e){}
-        }
-
-        function syncTimerModeValues() {
-            let m = settings[currentMode];
-            totalSeconds = m * 60; originalSeconds = totalSeconds;
-            if (currentMode === 'focus') {
-                labelIndicator.textContent = "✨ Fokus 🍅";
-                labelIndicator.className = "text-[10px] bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#f43f5e');
-            } else if (currentMode === 'short') {
-                labelIndicator.textContent = "☕ Istirahat Pendek";
-                labelIndicator.className = "text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#10b981');
-            } else {
-                labelIndicator.textContent = "🌴 Istirahat Panjang";
-                labelIndicator.className = "text-[10px] bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold";
-                progressRing.setAttribute('stroke', '#0ea5e9');
-            }
-            refreshDisplay();
-        }
-
-        function refreshDisplay() {
-            let mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
-            let secs = String(totalSeconds % 60).padStart(2, '0');
-            timeDisplay.textContent = `${mins}:${secs}`;
-            let offset = 792 - ((totalSeconds / originalSeconds) * 792);
-            progressRing.setAttribute('stroke-dashoffset', isNaN(offset) ? 0 : offset);
-        }
-
-        function changeThemeMode(m) {
-            isRunning = false; clearInterval(timerInterval); currentMode = m;
-            [modeFocus, modeShort, modeLong].forEach(b => b.className = "flex-1 py-1.5 text-xs font-medium rounded-full text-slate-400 hover:text-white transition-all");
+        <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
-            if(m === 'focus') {
-                modeFocus.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-rose-500/10 text-rose-400 border border-rose-500/20";
-                bgWrapper.className = "bg-theme-focus min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            } else if(m === 'short') {
-                modeShort.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
-                bgWrapper.className = "bg-theme-short min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            } else {
-                modeLong.className = "flex-1 py-1.5 text-xs font-bold rounded-full transition-all bg-sky-500/10 text-sky-400 border border-sky-500/20";
-                bgWrapper.className = "bg-theme-long min-h-screen w-full transition-all duration-700 ease-in-out px-4 py-6 md:p-8 flex flex-col justify-between";
-            }
-            syncTimerModeValues();
-        }
+            <div class="md:col-span-6 flex flex-col items-center">
+                <div class="bg-white border border-slate-200/80 p-1 rounded-2xl flex gap-1 mb-10 shadow-sm w-full max-w-xs">
+                    <button id="m-pomo" class="flex-1 py-2 text-xs font-medium rounded-xl text-slate-500 hover:text-slate-800 transition-all">🍅 Pomodoro</button>
+                    <button id="m-short" class="flex-1 py-2 text-xs font-bold rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 shadow-sm transition-all">☕ Short Break</button>
+                    <button id="m-long" class="flex-1 py-2 text-xs font-medium rounded-xl text-slate-500 hover:text-slate-800 transition-all">🌴 Long Break</button>
+                </div>
 
-        // TOGGLE RUN / PAUSE TIMER
-        timerCircle.addEventListener('click', () => {
-            if (isRunning) {
-                isRunning = false; clearInterval(timerInterval);
-            } else {
-                isRunning = true;
-                timerInterval = setInterval(() => {
-                    if (totalSeconds > 0) {
-                        totalSeconds--; refreshDisplay();
-                    } else {
-                        clearInterval(timerInterval); isRunning = false; triggerAlarm();
-                        changeThemeMode(currentMode === 'focus' ? 'short' : 'focus');
-                    }
-                }, 1000);
-            }
-        });
-
-        // KONTROL SELEKTOR TOMAT ESTIMASI
-        tomatSelector.addEventListener('click', (e) => {
-            const btn = e.target.closest('button'); if(!btn) return;
-            selectedTomat = parseInt(btn.getAttribute('data-val'));
-            tomatCountLabel.textContent = selectedTomat;
-            Array.from(tomatSelector.children).forEach((child, index) => {
-                if (index < selectedTomat) {
-                    child.className = "text-sm filter saturate-100 opacity-100 transition-all";
-                } else {
-                    child.className = "text-sm filter grayscale opacity-30 hover:opacity-70 transition-all";
-                }
-            });
-        });
-
-        // MANAJEMEN TUGAS (TASK)
-        taskForm.addEventListener('submit', (e) => {
-            e.preventDefault(); const txt = taskInput.value.trim(); if(!txt) return;
-            tasks.push({ id: Date.now().toString(), text: txt, tomat: selectedTomat, completed: false });
-            taskInput.value = ''; localStorage.setItem('premium_tasks', JSON.stringify(tasks));
-            renderTasks();
-        });
-
-        window.toggleTask = function(id) {
-            tasks = tasks.map(t => { if(t.id === id) t.completed = !t.completed; return t; });
-            localStorage.setItem('premium_tasks', JSON.stringify(tasks)); renderTasks();
-        }
-
-        window.deleteTask = function(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            localStorage.setItem('premium_tasks', JSON.stringify(tasks)); renderTasks();
-        }
-
-        function renderTasks() {
-            if (tasks.length > 0) {
-                emptyState.classList.add('hidden');
-                taskContainer.innerHTML = tasks.map(t => `
-                    <div class="flex items-center justify-between p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] transition-all group ${t.completed ? 'opacity-40 line-through' : ''}">
-                        <div class="flex items-center gap-3 cursor-pointer flex-1" onclick="toggleTask('${t.id}')">
-                            <div class="w-4 h-4 rounded border ${t.completed?'bg-rose-500 border-rose-500 flex items-center justify-center':'border-white/20'}">
-                                ${t.completed ? '<i class="fa-solid fa-check text-[9px] text-slate-950 font-black"></i>':''}
-                            </div>
-                            <span class="text-xs text-slate-200 font-medium">${t.text}</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-xs">${'🍅'.repeat(t.tomat)}</span>
-                            <button onclick="deleteTask('${t.id}')" class="text-slate-500 hover:text-rose-400 opacity-0 group-hover:opacity-100 transition-opacity text-xs p-1"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
+                <div class="relative w-72 h-72 flex items-center justify-center mb-8">
+                    <svg class="absolute inset-0 w-full h-full -rotate-90">
+                        <circle cx="50%" cy="50%" r="44%" stroke="#e2e8f0" stroke-width="5" fill="transparent" stroke-dasharray="10 5" class="opacity-40" />
+                        <circle id="ring-progress" cx="50%" cy="50%" r="44%" stroke="#10b981" stroke-width="6" fill="transparent" 
+                                stroke-dasharray="792" stroke-dashoffset="198" stroke-linecap="round" class="transition-all duration-300" />
+                    </svg>
+                    <div class="text-center z-10">
+                        <span id="display-time" class="text-6xl font-black text-slate-800 block tracking-tighter tabular-nums">05:00</span>
+                        <span id="display-label" class="text-[10px] uppercase tracking-widest font-bold text-emerald-500 mt-2 block">Istirahat Pendek</span>
                     </div>
-                `).join('');
-            } else {
-                taskContainer.innerHTML = ''; emptyState.classList.remove('hidden');
-            }
-        }
+                </div>
 
-        // MODAL EVENT HANDLERS
-        btnSettings.addEventListener('click', () => { settingsModal.classList.remove('hidden'); settingsModal.classList.add('flex'); setTimeout(() => settingsModal.classList.replace('opacity-0', 'opacity-100'), 10); });
-        const closeM = () => { settingsModal.classList.replace('opacity-100', 'opacity-0'); setTimeout(() => { settingsModal.classList.remove('flex'); settingsModal.classList.add('hidden'); }, 300); };
-        cancelSettings.addEventListener('click', closeM);
-        saveSettings.addEventListener('click', () => {
-            settings.focus = parseInt(document.getElementById('input-focus').value) || 25;
-            settings.short = parseInt(document.getElementById('input-short').value) || 5;
-            settings.long = parseInt(document.getElementById('input-long').value) || 15;
-            localStorage.setItem('premium_settings', JSON.stringify(settings)); syncTimerModeValues(); closeM();
-        });
+                <div class="flex items-center gap-5">
+                    <button class="w-12 h-12 rounded-xl bg-white border border-slate-200/60 hover:bg-slate-50 text-slate-400 hover:text-slate-600 flex items-center justify-center transition-all shadow-sm"><i class="fa-solid fa-rotate-left text-sm"></i></button>
+                    <button class="px-8 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-500/20 active:scale-95 transition-all flex items-center gap-2 text-sm"><i class="fa-solid fa-play"></i> Mulai</button>
+                    <button class="w-12 h-12 rounded-xl bg-white border border-slate-200/60 hover:bg-slate-50 text-slate-400 hover:text-slate-600 flex items-center justify-center transition-all shadow-sm"><i class="fa-solid fa-forward text-sm"></i></button>
+                </div>
+            </div>
 
-        // BANNER BEHAVIOR
-        document.getElementById('close-banner').addEventListener('click', () => { document.getElementById('welcome-banner').remove(); });
-        modeFocus.addEventListener('click', () => changeThemeMode('focus'));
-        modeShort.addEventListener('click', () => changeThemeMode('short'));
-        modeLong.addEventListener('click', () => changeThemeMode('long'));
+            <div class="md:col-span-6">
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-6 md:p-8 elegant-shadow min-h-[340px] flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-list-check text-slate-400"></i> Daftar Tugas</h3>
+                            <span class="text-[11px] bg-slate-100 text-slate-500 font-medium px-2.5 py-0.5 rounded-full">0 selesai</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-8 font-medium">Apa fokus Anda berikutnya?</p>
+                    </div>
 
-        window.onload = () => {
-            const s = localStorage.getItem('premium_settings'), t = localStorage.getItem('premium_tasks');
-            if(s) { settings = JSON.parse(s); document.getElementById('input-focus').value = settings.focus; document.getElementById('input-short').value = settings.short; document.getElementById('input-long').value = settings.long; }
-            if(t) { tasks = JSON.parse(t); renderTasks(); }
-            syncTimerModeValues();
-        };
-    </script>
+                    <div class="flex-grow flex flex-col items-center justify-center text-center py-8">
+                        <div class="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200/60 flex items-center justify-center mb-3 shadow-sm">
+                            <i class="fa-solid fa-briefcase text-slate-400 text-xs"></i>
+                        </div>
+                        <p class="text-xs text-slate-700 font-semibold mb-0.5">Belum ada tugas.</p>
+                        <p class="text-[10px] text-slate-400">Tulis tugas di atas untuk mulai melacak.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-6 text-[10px] text-slate-400/80 border-t border-slate-200/40">
+        <p>© 2026 Podomoro. Dibuat dengan cinta untuk produktivitas Anda.</p>
+    </footer>
+
 </body>
 </html>
