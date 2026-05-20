@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/podomoro-timer2/'
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
